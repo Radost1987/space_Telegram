@@ -7,8 +7,11 @@ This script downloads images of latest SpaceX launcher by using  SpaceX API and 
 Python 3.9
 
 requests==2.26.0
+
 python-telegram-bot==13.7
+
 python_dotenv==0.19.0
+
 urllib3==1.26.6
 
 ### How to install
