@@ -1,6 +1,6 @@
 # Space Telegram
 
-This script downloads images of latest SpaceX launcher by using  SpaceX API and images from [https://www.nasa.gov](https://www.nasa.gov). Then published the images in the Telegram chat every hour.
+This script downloads images of latest SpaceX launcher by using  [SpaceX API Docs](https://docs.spacexdata.com) and images from [https://www.nasa.gov](https://www.nasa.gov). Then published the images in the Telegram chat every hour.
 
 ## Requirements
 
