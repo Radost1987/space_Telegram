@@ -8,6 +8,11 @@ from dotenv import load_dotenv
 
 from fetch_nasa import fetch_nasa_apod
 from fetch_spacex import fetch_spacex_last_launch
+def create_images_folders(images_folder):
+    images_path = Path(f'{Path.cwd()}/{images_folder}')
+    images_path.mkdir(parents=True, exist_ok=True)
+    return images_path
+
 
 def load_files_to_telegram(images_folder, path):
     load_dotenv()
