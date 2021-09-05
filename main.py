@@ -9,20 +9,14 @@ from dotenv import load_dotenv
 from fetch_nasa import fetch_nasa_apod
 from fetch_spacex import fetch_spacex_last_launch
 
-while True:
+def load_files_to_telegram(images_folder, path):
     load_dotenv()
     bot = telegram.Bot(token=os.getenv('TELEGRAM_TOKEN'))
-    fetch_nasa_apod()
-    fetch_spacex_last_launch()
-    nasa_files = listdir('NASA images')
-    for nasa_file in nasa_files:
-        bot.send_document(chat_id=-1001586107729, document=open(
-        f'{Path.cwd()}/NASA images/{nasa_file}', 'rb')
-        )
-        time.sleep(86400)
-    spacex_files = listdir('SpaceX images')
-    for spacex_file in spacex_files:
-        bot.send_document(chat_id=-1001586107729, document=open(
-        f'{Path.cwd()}/SpaceX images/{spacex_file}', 'rb')
-        )
-        time.sleep(86400)
+    files = listdir(images_folder)
+    for file in files:
+        with open(f'{path}/{file}', 'rb') as image:
+            bot.send_document(
+                chat_id=os.getenv('TELEGRAM_CHAT_ID'),
+                document=image
+            )
+            time.sleep(86400)
