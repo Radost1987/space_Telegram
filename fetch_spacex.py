@@ -13,7 +13,7 @@ def fetch_spacex_last_launch():
     response.raise_for_status()
     links = response.json()['links']['flickr']['original']
     for i, link in enumerate(links, start=1):
-        download_images(link, f'spacex{i}.jpg')
+        download_images(link, main.spacex_images_folder, f'spacex{i}.jpg')
 
 
 if __name__ == "__main__":
