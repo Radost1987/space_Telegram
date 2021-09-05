@@ -24,7 +24,6 @@ def get_extension(url):
 
 
 def fetch_nasa_apod():
-    Path(f'{Path.cwd()}/NASA images').mkdir(parents=True, exist_ok=True)
     load_dotenv()
     url = 'https://api.nasa.gov/planetary/apod'
     nasa_api_key = os.getenv('NASA_API_KEY')
