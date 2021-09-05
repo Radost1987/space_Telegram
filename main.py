@@ -13,7 +13,7 @@ nasa_images_folder = 'NASA images'
 spacex_images_folder = 'SpaceX images'
 
 
-def create_images_folders(images_folder):
+def create_images_path(images_folder):
     images_path = Path(f'{Path.cwd()}/{images_folder}')
     images_path.mkdir(parents=True, exist_ok=True)
     return images_path
@@ -34,8 +34,8 @@ def load_files_to_telegram(images_folder, path):
 
 def main():
     while True:
-        spacex_images_path = create_images_folders(spacex_images_folder)
-        nasa_images_path = create_images_folders(nasa_images_folder)
+        spacex_images_path = create_images_path(spacex_images_folder)
+        nasa_images_path = create_images_path(nasa_images_folder)
         fetch_nasa.fetch_nasa_apod()
         fetch_nasa.fetch_nasa_epic()
         fetch_spacex.fetch_spacex_last_launch()
