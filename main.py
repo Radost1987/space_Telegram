@@ -8,6 +8,11 @@ from dotenv import load_dotenv
 
 import fetch_nasa
 import fetch_spacex
+
+nasa_images_folder = 'NASA images'
+spacex_images_folder = 'SpaceX images'
+
+
 def create_images_folders(images_folder):
     images_path = Path(f'{Path.cwd()}/{images_folder}')
     images_path.mkdir(parents=True, exist_ok=True)
