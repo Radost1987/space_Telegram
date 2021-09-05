@@ -18,6 +18,7 @@ pip install -r requirements.txt
 ```
 NASA_API_KEY=lcCXd3eic8FgtIM
 TELEGRAM_TOKEN=1975642396:AAGyWOXky56
+TELEGRAM_CHAT_ID=-1111111111111
 ```
 * Run the script in a terminal
 ```
