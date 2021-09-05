@@ -8,12 +8,6 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-def download_images(url, filename):
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(os.path.join('NASA images', filename), 'wb') as file:
-        image = file.write(response.content)
-    return image
 
 
 def get_extension(url):
