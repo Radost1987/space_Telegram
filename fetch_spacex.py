@@ -3,6 +3,8 @@ import os
 import requests
 from pathlib import Path
 
+import main
+from images_downloader import download_images
 
 
 def fetch_spacex_last_launch():
@@ -15,4 +17,5 @@ def fetch_spacex_last_launch():
 
 
 if __name__ == "__main__":
+    main.create_images_folders(main.spacex_images_folder)
     fetch_spacex_last_launch()
