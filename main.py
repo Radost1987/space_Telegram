@@ -6,8 +6,8 @@ from pathlib import Path
 import telegram
 from dotenv import load_dotenv
 
-from fetch_nasa import fetch_nasa_apod
-from fetch_spacex import fetch_spacex_last_launch
+import fetch_nasa
+import fetch_spacex
 def create_images_folders(images_folder):
     images_path = Path(f'{Path.cwd()}/{images_folder}')
     images_path.mkdir(parents=True, exist_ok=True)
