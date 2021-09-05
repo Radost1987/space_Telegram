@@ -33,7 +33,13 @@ def fetch_nasa_apod():
     pictures_info = response.json()
     for i, picture in enumerate(pictures_info, start=1):
         extension = get_extension(picture['url'])
-        download_images(picture['url'], f'apod{i}{extension}')
+        download_images(
+            picture['url'],
+            main.nasa_images_folder,
+            f'apod{i}{extension}'
+        )
+
+
 def fetch_nasa_epic():
     url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
