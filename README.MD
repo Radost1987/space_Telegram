@@ -1,15 +1,6 @@
 # Space Telegram
 
-This script downloads images of latest SpaceX launcher by using  SpaceX API and images from [https://www.nasa.gov](https://www.nasa.gov). Then published the images in the Telegram chat every hour.
-
-## Requirements
-
-Python 3.9
-
-requests==2.26.0
-python-telegram-bot==13.7
-python_dotenv==0.19.0
-urllib3==1.26.6
+This script downloads images of latest SpaceX launcher by using  [SpaceX API Docs](https://docs.spacexdata.com) and images from [https://www.nasa.gov](https://www.nasa.gov). Then publishing the images in the Telegram chat every day.
 
 ### How to install
 
@@ -27,6 +18,7 @@ pip install -r requirements.txt
 ```
 NASA_API_KEY=lcCXd3eic8FgtIM
 TELEGRAM_TOKEN=1975642396:AAGyWOXky56
+TELEGRAM_CHAT_ID=-1111111111111
 ```
 * Run the script in a terminal
 ```
