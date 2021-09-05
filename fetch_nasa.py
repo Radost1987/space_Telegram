@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 from urllib.parse import urlsplit
 
+import main
+from images_downloader import download_images
 
 
 load_dotenv()
@@ -50,5 +52,6 @@ def fetch_nasa_epic():
 
 
 if __name__ == "__main__":
+    main.create_images_folders(main.nasa_images_folder)
     fetch_nasa_apod()
     fetch_nasa_epic()
