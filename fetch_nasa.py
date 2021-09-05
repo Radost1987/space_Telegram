@@ -9,6 +9,9 @@ from urllib.parse import urlsplit
 
 
 
+load_dotenv()
+nasa_api_key = os.getenv('NASA_API_KEY')
+
 
 def get_extension(url):
     decoded_url = urllib.parse.unquote(url)
@@ -18,9 +21,7 @@ def get_extension(url):
 
 
 def fetch_nasa_apod():
-    load_dotenv()
     url = 'https://api.nasa.gov/planetary/apod'
-    nasa_api_key = os.getenv('NASA_API_KEY')
     payload = {
         'api_key': nasa_api_key,
         'count': 10
