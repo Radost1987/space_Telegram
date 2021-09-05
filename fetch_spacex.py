@@ -13,7 +13,6 @@ def download_images(url, filename):
 
 
 def fetch_spacex_last_launch():
-    Path(f'{Path.cwd()}/SpaceX images').mkdir(parents=True, exist_ok=True)
     url = 'https://api.spacexdata.com/v4/launches/latest'
     response = requests.get(url)
     response.raise_for_status()
