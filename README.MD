@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 * Then you should sign up for a [NASA developer key](https://api.nasa.gov/#apod)
 
-* You should be registered in the Telegram. Create a bot there and get its API token
+* You should be registered in the Telegram. Create a bot there and get its API token. Also you need your own Telegram channel and its chat id (chat_id is a link to it). Make the bot a channel administrator
 
 * Put them in file `.env` to folder with script like this:
 ```
