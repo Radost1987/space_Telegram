@@ -1,10 +1,7 @@
-import os
-
 import requests
-from pathlib import Path
 
-import main
-from images_downloader import download_images
+from images_downloader import download_image
+from folder_path_creater import create_folder_path
 
 
 def fetch_spacex_last_launch(image_folder):
@@ -15,6 +12,8 @@ def fetch_spacex_last_launch(image_folder):
     for number, link in enumerate(links, start=1):
         download_image(link, image_folder, f'spacex{number}.jpg')
 
+
+def main():
     spacex_image_folder = 'SpaceX images'
     create_folder_path(spacex_image_folder)
     fetch_spacex_last_launch(spacex_image_folder)
