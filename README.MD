@@ -9,7 +9,7 @@ This script downloads images of latest SpaceX launcher by using  [SpaceX API Doc
 * Then create and active a virtual environment, and install all the dependencies:
 
 ```bash
-pip install -r requirents.txt
+pip install -r requiments.txt
 ```
 
 * Then you should sign up for a [NASA developer key](https://api.nasa.gov/#apod)
