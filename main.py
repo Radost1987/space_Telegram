@@ -9,8 +9,6 @@ from dotenv import load_dotenv
 import fetch_nasa
 import fetch_spacex
 
-nasa_images_folder = 'NASA images'
-spacex_images_folder = 'SpaceX images'
 
 
 def create_images_path(images_folder):
@@ -34,13 +32,13 @@ def load_files_to_telegram(images_folder, path):
 
 def main():
     while True:
-        spacex_images_path = create_images_path(spacex_images_folder)
-        nasa_images_path = create_images_path(nasa_images_folder)
-        fetch_nasa.fetch_nasa_apod()
-        fetch_nasa.fetch_nasa_epic()
-        fetch_spacex.fetch_spacex_last_launch()
-        load_files_to_telegram(nasa_images_folder, nasa_images_path)
-        load_files_to_telegram(spacex_images_folder, spacex_images_path)
+        load_dotenv()
+        telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
+        telegram_token = os.getenv('TELEGRAM_TOKEN')
+        nasa_api_key = os.getenv('NASA_API_KEY')
+        nasa_image_folder = 'NASA images'
+        spacex_image_folder = 'SpaceX images'
+        create_folder_path(spacex_image_folder)
 
 
 if __name__ == '__main__':
