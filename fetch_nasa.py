@@ -4,15 +4,10 @@ import os
 import requests
 import urllib.parse
 from dotenv import load_dotenv
-from pathlib import Path
 from urllib.parse import urlsplit
 
-import main
-from images_downloader import download_images
-
-
-load_dotenv()
-nasa_api_key = os.getenv('NASA_API_KEY')
+from images_downloader import download_image
+from folder_path_creater import create_folder_path
 
 
 def get_extension(url):
@@ -22,7 +17,7 @@ def get_extension(url):
     return extension
 
 
-def fetch_nasa_apod():
+def fetch_nasa_apod(nasa_api_key, nasa_image_folder):
     url = 'https://api.nasa.gov/planetary/apod'
     payload = {
         'api_key': nasa_api_key,
@@ -30,34 +25,41 @@ def fetch_nasa_apod():
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    pictures_info = response.json()
-    for i, picture in enumerate(pictures_info, start=1):
-        extension = get_extension(picture['url'])
-        download_images(
-            picture['url'],
-            main.nasa_images_folder,
-            f'apod{i}{extension}'
+    images_info = response.json()
+    for number, image in enumerate(images_info, start=1):
+        extension = get_extension(image['url'])
+        download_image(
+            image['url'],
+            nasa_image_folder,
+            f'apod{number}{extension}'
         )
 
 
-def fetch_nasa_epic():
+def fetch_nasa_epic(nasa_api_key, nasa_image_folder):
     url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
         'api_key': nasa_api_key
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    for i, image in enumerate(response.json(), start=1):
+    for number, image in enumerate(response.json(), start=1):
         created_date = datetime.datetime.fromisoformat(image['date']) \
             .strftime('%Y/%m/%d')
-        download_images(
+        download_image(
             f"https://epic.gsfc.nasa.gov/archive/natural/{created_date}/png/{image['image']}.png",
-            main.nasa_images_folder,
-            f'epic{i}.png'
+            nasa_image_folder,
+            f'epic{number}.png'
         )
 
 
+def main():
+    load_dotenv()
+    nasa_api_key = os.getenv('NASA_API_KEY')
+    nasa_image_folder = 'NASA images'
+    create_folder_path(nasa_image_folder)
+    fetch_nasa_apod(nasa_api_key, nasa_image_folder)
+    fetch_nasa_epic(nasa_api_key, nasa_image_folder)
+
+
 if __name__ == "__main__":
-    main.create_images_folders(main.nasa_images_folder)
-    fetch_nasa_apod()
-    fetch_nasa_epic()
+    main()
