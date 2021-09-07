@@ -18,7 +18,7 @@ def load_files_to_telegram(image_folder, token, chat_id):
                 chat_id=chat_id,
                 document=image
             )
-            time.sleep(86400)
+        time.sleep(86400)
 
 
 def main():
