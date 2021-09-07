@@ -10,13 +10,6 @@ from fetch_spacex import fetch_spacex_last_launch
 from folder_path_creater import create_folder_path
 
 
-
-def create_images_path(images_folder):
-    images_path = Path(f'{Path.cwd()}/{images_folder}')
-    images_path.mkdir(parents=True, exist_ok=True)
-    return images_path
-
-
 def load_files_to_telegram(images_folder, path):
     load_dotenv()
     bot = telegram.Bot(token=os.getenv('TELEGRAM_TOKEN'))
