@@ -10,14 +10,12 @@ from fetch_spacex import fetch_spacex_last_launch
 from folder_path_creater import create_folder_path
 
 
-def load_files_to_telegram(images_folder, path):
-    load_dotenv()
-    bot = telegram.Bot(token=os.getenv('TELEGRAM_TOKEN'))
-    files = listdir(images_folder)
-    for file in files:
-        with open(f'{path}/{file}', 'rb') as image:
+def load_files_to_telegram(image_folder, token, chat_id):
+    bot = telegram.Bot(token=token)
+    for path in Path(image_folder).iterdir():
+        with open(f'{path}', 'rb') as image:
             bot.send_document(
-                chat_id=os.getenv('TELEGRAM_CHAT_ID'),
+                chat_id=chat_id,
                 document=image
             )
             time.sleep(86400)
@@ -32,6 +30,20 @@ def main():
         nasa_image_folder = 'NASA images'
         spacex_image_folder = 'SpaceX images'
         create_folder_path(spacex_image_folder)
+        create_folder_path(nasa_image_folder)
+        fetch_nasa_apod(nasa_api_key, nasa_image_folder)
+        fetch_nasa_epic(nasa_api_key, nasa_image_folder)
+        fetch_spacex_last_launch(spacex_image_folder)
+        load_files_to_telegram(
+            nasa_image_folder,
+            telegram_token,
+            telegram_chat_id
+        )
+        load_files_to_telegram(
+            spacex_image_folder,
+            telegram_token,
+            telegram_chat_id
+        )
 
 
 if __name__ == '__main__':
