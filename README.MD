@@ -6,9 +6,14 @@ This script downloads images of latest SpaceX launcher by using  [SpaceX API Doc
 
 * Python3 should be already installed.
 
+<<<<<<< Updated upstream
 * Then create and active a virtual environment, and install all the dependencies:
 
 ```bash
+=======
+* Then use `pip` (or `pip3`, if there is a conflict with Python2) to install dependencies:
+```
+>>>>>>> Stashed changes
 pip install -r requiments.txt
 ```
 
