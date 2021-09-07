@@ -6,10 +6,12 @@ This script downloads images of latest SpaceX launcher by using  [SpaceX API Doc
 
 * Python3 should be already installed.
 
-* Then use `pip` (or `pip3`, if there is a conflict with Python2) to install dependencies:
+* Then create a virtual environment, and install all the dependencies:
+
+```bash
+pip install -r requirents.txt
 ```
-pip install -r requirements.txt
-```
+
 * Then you should sign up for a [NASA developer key](https://api.nasa.gov/#apod)
 
 * You should be registered in the Telegram. Create a bot there and get its API token. Also you need your own Telegram channel and its chat id (chat_id is a link to it). Make the bot a channel administrator
@@ -21,7 +23,7 @@ TELEGRAM_TOKEN=1975642396:AAGyWOXky56
 TELEGRAM_CHAT_ID=-1111111111111
 ```
 * Run the script in a terminal
-```
+```bash
 python3 main.py
 ```
 
