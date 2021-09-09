@@ -13,7 +13,7 @@ from folder_path_creater import create_folder_path
 def load_files_to_telegram(image_folder, token, chat_id):
     bot = telegram.Bot(token=token)
     for path in Path(image_folder).iterdir():
-        with open(f'{path}', 'rb') as image:
+        with open(path, 'rb') as image:
             bot.send_document(
                 chat_id=chat_id,
                 document=image
