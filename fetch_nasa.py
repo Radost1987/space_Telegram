@@ -25,8 +25,8 @@ def fetch_nasa_apod(nasa_api_key, nasa_image_folder):
     }
     response = requests.get(url, params=payload)
     response.raise_for_status()
-    images_info = response.json()
-    for number, image in enumerate(images_info, start=1):
+    images = response.json()
+    for number, image in enumerate(images, start=1):
         extension = get_extension(image['url'])
         download_image(
             image['url'],
